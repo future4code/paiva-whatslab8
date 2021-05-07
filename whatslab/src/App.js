@@ -13,7 +13,20 @@ const MessengerApp = styled.div`
   flex: 1 1 0%;
   display: flex;
   flex-direction: column;
+`
+const JanelaChat = styled.div`
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    padding: 20px;
+`
 
+const InputsMensagens = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 7fr 1fr
+  
 `
 
 
@@ -25,14 +38,14 @@ export default class App extends React.Component {
   return (
     <MainContainer>
       <MessengerApp>
-        <div>
+        <JanelaChat>
           <p>Aqui vão as mensagens</p>
-        </div>
-        <div>
+        </JanelaChat>
+        <InputsMensagens>
           <input type="text" placeholder="Usuário"></input>
           <input type="text" placeholder="Mensagem"></input>
           <button>Enviar</button>
-        </div>
+        </InputsMensagens>
       </MessengerApp>
     </MainContainer>
   );
