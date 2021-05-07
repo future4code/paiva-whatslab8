@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
 
-function App() {
+const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const MessengerApp = styled.div`
+  max-width: 600px;
+  height: 100vh;
+  border: 1px solid black;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+
+`
+
+
+export default class App extends React.Component {
+  
+  render() {
+
+     
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainContainer>
+      <MessengerApp>
+        <div>
+          <p>Aqui vão as mensagens</p>
+        </div>
+        <div>
+          <input type="text" placeholder="Usuário"></input>
+          <input type="text" placeholder="Mensagem"></input>
+          <button>Enviar</button>
+        </div>
+      </MessengerApp>
+    </MainContainer>
   );
 }
-
-export default App;
+}
