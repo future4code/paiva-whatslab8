@@ -15,7 +15,6 @@ const MessengerApp = styled.div`
   flex-direction: column;
 
 `
-
 const JanelaMenssagens = styled.div`
     flex: 1 1 0%;
     display: flex;
