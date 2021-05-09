@@ -48,15 +48,13 @@ class App extends React.Component {
     const newMessage = {
       user: this.state.userValue,
       text: this.state.messageValue
-
     }
+
     const newMessageArray = [newMessage, ...this.state.messages]
 
-    this.setState({messages: newMessageArray, messageValue: ""})
+    this.setState({messages: newMessageArray,  userValue: '', messageValue: ''})
   }
 
-
-  
   render() {
       
   return (
@@ -69,10 +67,10 @@ class App extends React.Component {
         </WindowMessages>
         <InputMessages>
           <input onChange={this.onChangeUserValue} 
-            value={this.state.user} 
+            value={this.state.userValue} 
             placeholder="Usuário"></input>
-          <input onChange={this.onChangeMessageValue} 
-            value={this.state.message}
+          <input onChange={this.onChangeMessageValue}
+            value={this.state.messageValue}
             placeholder="Mensagem"></input>
           <button onClick={this.sendMessage}>Enviar</button>
         </InputMessages>
