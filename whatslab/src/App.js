@@ -46,10 +46,11 @@ class App extends React.Component {
 
   sendMessage = () => {
     const newMessage = {
+      id: Date.now(),
       user: this.state.userValue,
       text: this.state.messageValue
     }
-
+    
     if (this.state.userValue !== "" && this.state.messageValue !== "") {
       const newMessageArray = [newMessage, ...this.state.messages]
       this.setState({messages: newMessageArray,  userValue: '', messageValue: ''})
@@ -60,7 +61,16 @@ class App extends React.Component {
     if (event.key === 'Enter') {
       this.sendMessage(event)
     }
+  }
 
+  deleteMessage = (identificador) => {
+    console.log("essa menssagem será deletada", identificador)
+    const arrayComTodasMensg = [...this.state.messages];
+    const arraySemMensDeletadas = arrayComTodasMensg.filter((msgns) => {
+      return msgns.id !== identificador
+    });
+
+    this.setState({ messages: arraySemMensDeletadas });
   }
 
   render() {
@@ -70,7 +80,7 @@ class App extends React.Component {
       <MessengerApp>
         <WindowMessages>
           {this.state.messages.map((message) => {
-            return <p><strong>{message.user}</strong>: {message.text}</p>
+            return <p key={message.id} onDoubleClick={() => this.deleteMessage(message.id)}><strong>{message.user}</strong>: {message.text}</p>
           })}
         </WindowMessages>
         <InputMessages>
@@ -80,7 +90,8 @@ class App extends React.Component {
           <input onChange={this.onChangeMessageValue}
             value={this.state.messageValue}
             placeholder="Mensagem"
-            onKeyPress={this.sendMessageEnter}></input>
+            onKeyPress={this.sendMessageEnter}
+            ></input>
           <button onClick={this.sendMessage}>Enviar</button>
         </InputMessages>
       </MessengerApp>
