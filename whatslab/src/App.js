@@ -50,9 +50,10 @@ class App extends React.Component {
       text: this.state.messageValue
     }
 
-    const newMessageArray = [newMessage, ...this.state.messages]
-
-    this.setState({messages: newMessageArray,  userValue: '', messageValue: ''})
+    if (this.state.userValue !== "" && this.state.messageValue !== "") {
+      const newMessageArray = [newMessage, ...this.state.messages]
+      this.setState({messages: newMessageArray,  userValue: '', messageValue: ''})
+    }
   }
 
   sendMessageEnter = (event) => {
