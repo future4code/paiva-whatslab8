@@ -55,6 +55,13 @@ class App extends React.Component {
     this.setState({messages: newMessageArray,  userValue: '', messageValue: ''})
   }
 
+  sendMessageEnter = (event) => {
+    if (event.key === 'Enter') {
+      this.sendMessage(event)
+    }
+
+  }
+
   render() {
       
   return (
@@ -71,7 +78,8 @@ class App extends React.Component {
             placeholder="Usuário"></input>
           <input onChange={this.onChangeMessageValue}
             value={this.state.messageValue}
-            placeholder="Mensagem"></input>
+            placeholder="Mensagem"
+            onKeyPress={this.sendMessageEnter}></input>
           <button onClick={this.sendMessage}>Enviar</button>
         </InputMessages>
       </MessengerApp>
