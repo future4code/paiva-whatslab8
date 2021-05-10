@@ -27,6 +27,10 @@ const InputMessages = styled.div`
     display: grid;
     grid-template-columns: 2fr 7fr 1fr;
 `
+const MessageUser = styled.p`
+  display: flex;
+  justify-content: flex-end;
+`
 
 class App extends React.Component {
 
@@ -80,7 +84,11 @@ class App extends React.Component {
       <MessengerApp>
         <WindowMessages>
           {this.state.messages.map((message) => {
-            return <p key={message.id} onDoubleClick={() => this.deleteMessage(message.id)}><strong>{message.user}</strong>: {message.text}</p>
+            if (message.user === "eu") {
+              return <MessageUser key={message.id} onDoubleClick={() => this.deleteMessage(message.id)}><strong>{message.user}</strong>: {message.text}</MessageUser>
+            } else {
+              return <p key={message.id} onDoubleClick={() => this.deleteMessage(message.id)}><strong>{message.user}</strong>: {message.text}</p>
+            }
           })}
         </WindowMessages>
         <InputMessages>
